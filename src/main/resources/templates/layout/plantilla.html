@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                </head>
+                <body>
+                    <header th:fragment="header">
+                        <nav class="navbar navbar-dark bg-dark bg-gradient">
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="#">
+                                    <img src="/img/java.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                                        App Ejemplo
+                                </a>
+                                <form method="post" th:action="@{/logout}">
+                                    <span class="fw-bold text-white">Bienvenido: </span>
+                                    <span sec:authentication="name" class="text-white"></span>
+                                    <button class="btn btn-outline-info fw-bold" type="submit">
+                                        Cerrar Sesión
+                                    </button>
+                                </form>
+                            </div>
+                        </nav>
+                    </header>
+                    
+
+                    
+                    <footer th:fragment="footer" class="bg-dark bg-gradient fixed-bottom text-center text-white py-3">
+                        <span class="h6 fw-bold">App bcn &copy; </span>
+                    </footer>
+                </body>
+                </html>

@@ -1,0 +1,58 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Agregar Producto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <div class="container-fluid">
+            <div class="row mt-5">
+                <div class="col-12 col-lg-6 mx-auto">
+                    <h3>Nuevo Producto</h3>
+                    <a th:href="@{/}" class="btn btn-secondary mb-3"><i class="bi bi-arrow-return-left"></i> Volver</a>
+                    <form th:action="@{/guardar}" method="post" th:object="${producto}">
+                        <input type="hidden" name="id" th:field="*{id}"/>
+                        <div class="col-12 mx-auto">
+                             <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Nombre" 
+                                               name="nombre" id="nombre" th:field="*{nombre}"/>
+                             </div>
+                        </div>
+                        <div class="col-12 mx-auto">
+                             <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Código Producto" 
+                                               name="codigoProducto" id="codigoProducto" th:field="*{codigoProducto}"/>
+                             </div>
+                        </div>
+                        <div class="col-12 mx-auto">
+                             <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Precio $$$" 
+                                               name="precio" id="precio" th:field="*{precio}"/>
+                             </div>
+                        </div>
+                        <div class="col-12 mx-auto">
+                             <div class="input-group mb-3">
+                                 <select th:field="*{categoria}" class="form-control" required>
+                                     <th:block th:each="cat: ${categorias}">
+                                     <option th:text="${cat.nombre}" th:value="${cat.id}"/>
+                                     </th:block>
+                                 </select>
+                             </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="guardar">Agregar</button>
+                    </form>
+                </div>                
+            </div>
+        </div>
+        
+        
+        
+         <footer th:replace="layout/plantilla :: footer"></footer>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>
